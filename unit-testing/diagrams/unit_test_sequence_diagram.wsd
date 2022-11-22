@@ -1,0 +1,8 @@
+@startuml
+
+"TestingOracle" -> "TestingOracle": expected_result
+"TestingOracle" -> "TestingOracle": resources=load_resources()
+"TestingOracle" -> "MethodToTest": result = execute(resources)
+"TestingOracle" -> "TestingOracle": evaluate(result, expected_result)\
+
+@enduml

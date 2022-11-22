@@ -1,0 +1,21 @@
+@startuml
+card A{
+}
+card E {
+}
+card B {
+}
+card C {
+}
+card D{
+}
+card H {
+
+}
+
+A --> E
+A --> B
+B --> C
+B --> D
+D --> H
+@enduml
