@@ -73,7 +73,7 @@ In the previous example, it became clear that is deficult to test the A method, 
 
 In order to properly test all the code we have to apply some changes:
 - Make the code Testeable
-- Usage of subs and mocks
+- Usage of stubs and mocks
 - Define proper limit on UT
 - Create test cases
 - Define coverage
@@ -112,26 +112,26 @@ The UT for the new A function:
 ```js
 test("Testing A method - first if true ", ()=>{
     let expectedValue = "expected_result"
-    function subB(input){
+    function stubB(input){
         return expected_value_to_trigger_first_if;
     }
     const globalFakeValue = ...;
-    const result = a(globalFakeValue, subB);//As we can see we cannot apply global state changes
+    const result = a(globalFakeValue, stubB);//As we can see we cannot apply global state changes
     expect(result).toBe(expectedValue)
 });
 
 test("Testing A method - second if true ", ()=>{
     let expectedValue = "expected_result"
-    function subB(input){
+    function stubB(input){
         return expected_value_to_trigger_second_if;
     }
     const globalFakeValue = ...;
-    const result = a(globalFakeValue, subB);//As we can see we cannot apply global state changes
+    const result = a(globalFakeValue, stubB);//As we can see we cannot apply global state changes
     expect(result).toBe(expectedValue)
 });
 ```
 
-As we can apreciate, now that the dependencies are passed to the method, we can eassily mock/sub them, and properly create UTs for our A method.
+As we can apreciate, now that the dependencies are passed to the method, we can eassily mock/stub them, and properly create UTs for our A method.
 
 ## Testing sequence
 
@@ -141,11 +141,45 @@ In this case we should start by those methods that have no o less dependencies a
 
 This will also help to make sure everything works well before getting to the top.
 
-## Subs and Mocks on UT
+## Stubs and Mocks on UT
 
+Stubs are a piece of code that allows to run the tests (also called dummy code), it does not contain actual logic and you cannot verify how it was called. Mocks are also dummy code, but with the difference that you can verify that was propely called.
 
+Let's say we have the following code:
+```js
+function a(listElements, functionB){
+    const result = [];
+    listElements.forEach(e => {
+        result.push(e * functionB(e));
+    });
+    return result;
+}
+```
 
-## What should cover an UT
+We can test it as:
+
+```js
+test("Testing A method ", ()=>{
+    const expectedReturn = [1, 8, 27];
+    //Defining a function is not necessarily but it can be done
+    const mockFunction = mocking_lib.mockFunction(f(value){
+        return value * value
+    });
+    const inputList = [1,2,3];
+    const result = a(inputList, mockFunction);
+
+    //Check expected result
+    expect(result).toBe(expectedReturn);
+
+    //Check internal state execution
+    // As our input only has 3 values, the method be should be called ony 3 times.
+
+    //Most of the mocking libs allows you to know how many times a mocking method was called, and even to know the values it was called with.
+    expect(mockFunction.mock.calls).toBe(3);
+});
+```
+
+## What should cover an UT?
 
 ## Test Cases
 
