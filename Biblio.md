@@ -1,0 +1,3 @@
+[1] Practical Software Testing by Ilene Burnstein. ISBN 0-387-95131-8
+[2] The aArt of software Testing 3rd Edition by Glenford J. Myers, Corey Sandler, Tom Badgett. ISBN 978-1-118-03196-4.
+[3] Software Architecture in Practice 3rd Edition by Len Bass, Paul Clements, Rick Kazman. ISBN 978-0-321-81573-6
