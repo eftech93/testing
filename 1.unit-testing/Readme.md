@@ -178,30 +178,32 @@ test("Testing A method ", ()=>{
     expect(mockFunction.mock.calls).toBe(3);
 });
 ```
-
 ## What should cover an UT?
+
+We already covered some information about UTs, now we need to understand what should be covered within an UT:
+- Internal state of tested method:
+  - Loop execution
+  - Value changes
+  - Local state change
+- Returns value:
+- Code flow (if-else)
+- Loops 
+- Dependencies call
+- Null values
+- Non null values
+
+## What should not be covered on an UT?
+
+- UI
+- Integration with APIs
+- Local storage access
+- Dependencies with platform dependency class 
+- Launch of resources
+- Database calls
 
 ## Test Cases
 
 # Code Coverage for UT
-
-# Make the code testeable
-
-![Function dependency diagrams](/1.unit-testing/diagrams_images/unit_test_dependencies.png)
-
-If we try to unit tests the previous program we can have that :
-
-``` javascript
-// Function A "implementation"
-function A(){
-    ...
-    let bResult = B();
-    ...
-    let eResult = E();
-    ...
-    return ...
-}
-```
 
 # Testing examples
 ## Testing Frontend
