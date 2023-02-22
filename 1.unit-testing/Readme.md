@@ -201,15 +201,6 @@ We already covered some information about UTs, now we need to understand what sh
 - Launch of resources
 - Database calls
 
-## Test Cases
-
-# Code Coverage for UT
-
-# Testing examples
-## Testing Frontend
-## Testing Backend 
-## Testing Mobile apps
-
 # Discussion about Unit Tests
 
 Is it important to unit test every single function, method, class in a system?
